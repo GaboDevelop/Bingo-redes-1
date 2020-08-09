@@ -13,7 +13,7 @@ public class panelArriba extends JPanel
         cartones = new ArrayList();
         t = new Thread[6];
         hilos = new HiloVerificador[6];
-        ncartones = 1;
+        ncartones = 0;
         pb = pbalotas;
         setBackground(Color.gray);
         setLayout(new GridLayout(2, 3, 10, 10));
@@ -52,7 +52,7 @@ public class panelArriba extends JPanel
 
     public void setNcartones(int ncartones)
     {
-        this.ncartones = ncartones;
+        this.ncartones = this.ncartones+ncartones;
     }
 
     public Thread[] getT()

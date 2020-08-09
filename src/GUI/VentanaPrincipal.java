@@ -7,10 +7,20 @@ import javax.swing.*;
 
 public class VentanaPrincipal extends JApplet
 {
-
+    JPanel panelPrincipal;
+    panelAbajo panelAbajo;
+    panelArriba panelArriba;
+    panelBalotas pb;
+    JMenuItem ncartones;
+    JMenuItem comenzar;
+    boolean swsihaycarton;
+    boolean partidaCreada;
+   
+    
     public VentanaPrincipal()
     {
         panelPrincipal = (JPanel)getContentPane();
+        partidaCreada = false;
         swsihaycarton = false;
     }
 
@@ -34,18 +44,30 @@ public class VentanaPrincipal extends JApplet
         JMenuBar barra = new JMenuBar();
         JMenu archivo = new JMenu("Archivo");
         JMenu ayuda = new JMenu("Ayuda");
-        ncartones = new JMenuItem("Numero de Jugadores");
+        //ACA HAY QUE VERIFICAR SI YA HAY UNA PARTIDA CREADA CON UNA VARIABLE DE ESTA CLASE
+        if(partidaCreada){
+            ncartones = new JMenuItem("Unirse a Partida");
+        }else{
+            ncartones = new JMenuItem("Crear Partida");
+        }
         ncartones.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent arg0)
             {
                 try
                 {
-                    VentanaPrincipal.this.panelArriba.eliminarCartones();
+                    
+                   
+                    //for(nc = Integer.parseInt(JOptionPane.showInputDialog("Digite el numero de Jugadores:")); nc > 6 || nc < 1; nc = Integer.parseInt(JOptionPane.showInputDialog("Digite el numero de Jugadores:")));
+                   
+                    if(!partidaCreada){
+                        VentanaPrincipal.this.panelArriba.eliminarCartones();
+                        ncartones.setText("Unirse a Partida");
+                        partidaCreada = true;
+                    }
                     int nc;
-                    for(nc = Integer.parseInt(JOptionPane.showInputDialog("Digite el numero de Jugadores:")); nc > 6 || nc < 1; nc = Integer.parseInt(JOptionPane.showInputDialog("Digite el numero de Jugadores:")));
                     swsihaycarton = true;
-                    VentanaPrincipal.this.panelArriba.setNcartones(nc);
+                    VentanaPrincipal.this.panelArriba.setNcartones(1);
                     VentanaPrincipal.this.panelArriba.crearCartones();
                     VentanaPrincipal.this.panelArriba.updateUI();
                 }
@@ -117,11 +139,5 @@ public class VentanaPrincipal extends JApplet
         setJMenuBar(barra);
     }
 
-    JPanel panelPrincipal;
-    panelAbajo panelAbajo;
-    panelArriba panelArriba;
-    panelBalotas pb;
-    JMenuItem ncartones;
-    JMenuItem comenzar;
-    boolean swsihaycarton;
+    
 }

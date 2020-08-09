@@ -14,12 +14,13 @@ public class carton extends JPanel
         nombre = nom;
         JPanel p = new JPanel();
         p.setBackground(Color.yellow);
-        p.setLayout(new GridLayout(6, 5));
+        p.setLayout(new GridLayout(6, 6));
         casillas = new JPanel[6][5];
         numeros = new int[5][5];
         colocarPalabraBingo(p);
+        colocarNumeroJugador(p);
         Vnumeros = new ArrayList();
-        for(int i = 1; i < casillas.length; i++)
+        for(int i = 2; i < casillas.length; i++)
         {
             for(int j = 0; j < casillas[0].length; j++)
             {
@@ -67,6 +68,25 @@ public class carton extends JPanel
             casillas[0][i].setBorder(new LineBorder(Color.yellow, 1));
             casillas[0][i].add(b);
             p.add(casillas[0][i]);
+        }
+
+    }
+    
+    private void colocarNumeroJugador(JPanel p)
+    {
+        String v[] = {
+            "T", "U", "Y", "O", "-"
+        };
+        for(int i = 0; i < 5; i++)
+        {
+            casillas[1][i] = new JPanel();
+            casillas[1][i].setLayout(new BorderLayout());
+            casillas[1][i].setBackground(Color.green);
+            JLabel b = new JLabel(v[i]);
+            b.setHorizontalAlignment(0);
+            casillas[1][i].setBorder(new LineBorder(Color.green, 1));
+            casillas[1][i].add(b);
+            p.add(casillas[1][i]);
         }
 
     }
