@@ -73,7 +73,7 @@ public class VentanaPrincipal extends JApplet
                 }
                 catch(NumberFormatException nfe)
                 {
-                    JOptionPane.showMessageDialog(null, "Error, digite un numero valido, maximo 6.");
+                    JOptionPane.showMessageDialog(null, "Error, digite un numero valido, maximo 4.");
                 }
             }
         }
@@ -97,7 +97,7 @@ public class VentanaPrincipal extends JApplet
                 }
             }
         }
-);
+);        
         JMenuItem salir = new JMenuItem("Salir");
         salir.addActionListener(new ActionListener() {
 
@@ -118,7 +118,7 @@ public class VentanaPrincipal extends JApplet
 
         }
 );
-        JMenuItem acercade = new JMenuItem("Acerca de");
+        JMenuItem acercade = new JMenuItem("Acerca de ");
         acercade.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e)
@@ -139,5 +139,5 @@ public class VentanaPrincipal extends JApplet
         setJMenuBar(barra);
     }
 
-    
+   
 }
